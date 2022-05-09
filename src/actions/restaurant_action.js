@@ -73,8 +73,8 @@ export const createRestaurant = restaurant => dispatch =>(
     )
 )
 
-export const updateRestaurant = restaurant => dispatch =>(
-    RestaurantUtil.updateRestaurant(restaurant).then(
+export const updateRestaurant = (permit, restaurant) => dispatch => {
+    return RestaurantUtil.updateRestaurant(permit, restaurant).then(
         restaurant => {
             //dispatch(AlertAction.success("Changes has been saved."));
             dispatch(receiveRestaurant(restaurant))
@@ -84,7 +84,7 @@ export const updateRestaurant = restaurant => dispatch =>(
             return dispatch(receiveRestaurantError(restaurant.permit, err))
         }
     )
-)
+}
 
 export const deleteRestaurant = permit => dispatch =>(
     RestaurantUtil.deleteRestaurant(permit).then(

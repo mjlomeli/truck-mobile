@@ -1,19 +1,8 @@
-export const createRestaurant = (state) => {
+export const activateModal = (type) => {
     return new Promise((resolve, reject) => {
-        if (!state.entities.id) {
-            resolve(true)
-        } else {
-            reject(false)
-        }
-    })
-}
-
-export const updateRestaurant = (state) => {
-    return new Promise((resolve, reject) => {
-        if (!state.entities.id) {
-            resolve(true)
-        } else {
-            reject(false)
-        }
+        if (type === 'create' || type === 'update')
+            resolve(type)
+        else
+            reject()
     })
 }

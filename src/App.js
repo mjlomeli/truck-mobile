@@ -1,5 +1,8 @@
 import React from 'react';
 import Alert from "./components/alert/alert";
+import Modal from "./components/modal/modal";
+import Filters from "./components/navbar_layout/navbar_filters";
+import Listing from "./components/flow_layout/listing";
 
 class App extends React.Component {
     constructor(props) {
@@ -7,16 +10,13 @@ class App extends React.Component {
     }
     render() {
         return <>
+            <Filters />
             <div className="App">
-                <header className="App-header">
-                    <p>Edit <code>src/App.js</code> and save to reload.</p>
-                    <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                        Learn React
-                    </a>
-                </header>
-                <Alert />
+                <Listing />
             </div>
-        </>
+            <Alert />
+            <Modal />
+            </>
     }
 }
 

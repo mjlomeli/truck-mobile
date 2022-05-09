@@ -6,27 +6,25 @@ import {
     Link,
     HashRouter
 } from 'react-router-dom';
-import "./login_modal.css"
+import "./create_restaurant.css"
 import GridLayout from "../grid_layout/grid_layout";
-import {createRegister, deleteModal} from "../../../actions/ui_modal_action";
-import {createUser, createSession} from "../../../actions/session_action";
+import {deleteModal} from "../../actions/modal_action";
 import {connect} from "react-redux";
-import {notification} from "../../../actions/alert_action";
+import {notification} from "../../actions/alert_action";
+import {createRestaurant} from "../../actions/restaurant_action";
 
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-    }
+    return {}
 };
 
 const mapDispatchToProps = dispatch => ({
     notification: (message) => dispatch(notification(message)),
-    createRegister: () => dispatch(createRegister()),
+    createRestaurant: (restaurant) => dispatch(createRestaurant(restaurant)),
     deleteModal: () => dispatch(deleteModal()),
-    createSession: (user) => dispatch(createSession(user))
 });
 
-class LoginModal extends React.Component {
+class CreateModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {email: "", password: "", staySignedIn: true, disabled: true}
@@ -172,4 +170,4 @@ class LoginModal extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateModal);

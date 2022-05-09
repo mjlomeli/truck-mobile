@@ -41,9 +41,9 @@ export const notification = (message, timeout=5000) => (dispatch, getState) => {
     return AlertUtil.createAlert("notification", message).then(
         alert => {
             let prevTimeout = fetchTimoutId(getState);
-            clearTimeout(prevTimeout)
+            clearTimeout(prevTimeout);
             let timeoutId = setTimeout(() => deleteAlert()(dispatch, getState), timeout);
-            return dispatch(receiveAlert(alert, timeoutId))
+            return dispatch(receiveAlert(alert, timeoutId));
         }
 )};
 
@@ -52,9 +52,9 @@ export const caution = (message, timeout=5000) => (dispatch, getState) => {
     return AlertUtil.createAlert("warning", message).then(
         alert => {
             let prevTimeout = fetchTimoutId(getState);
-            clearTimeout(prevTimeout)
+            clearTimeout(prevTimeout);
             let timeoutId = setTimeout(() => deleteAlert()(dispatch, getState), timeout);
-            return dispatch(receiveAlert(alert, timeoutId))
+            return dispatch(receiveAlert(alert, timeoutId));
         }
 )};
 
@@ -63,9 +63,9 @@ export const success = (message, timeout=5000) => (dispatch, getState) => {
     return AlertUtil.createAlert("success", message).then(
         alert => {
             let prevTimeout = fetchTimoutId(getState);
-            clearTimeout(prevTimeout)
+            clearTimeout(prevTimeout);
             let timeoutId = setTimeout(() => deleteAlert()(dispatch, getState), timeout);
-            return dispatch(receiveAlert(alert, timeoutId))
+            return dispatch(receiveAlert(alert, timeoutId));
         }
 )};
 
@@ -81,7 +81,7 @@ export const createAlert = (type, message, timeout=5000) => (dispatch, getState)
             let prevTimeout = fetchTimoutId(getState);
             clearTimeout(prevTimeout)
             let timeoutId = setTimeout(() => deleteAlert()(dispatch, getState), timeout);
-            return dispatch(receiveAlert(alert, timeoutId))
+            return dispatch(receiveAlert(alert, timeoutId));
         }
 )};
 

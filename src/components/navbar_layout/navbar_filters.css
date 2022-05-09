@@ -1,0 +1,75 @@
+.filter-sort-name-button {
+    background-color: #6c2f2f;
+}
+
+.filter-sort-address-button {
+    background-color: #2F466C;
+}
+
+.filter-add-truck-button {
+    background-color: #6c5e2f;
+}
+
+.filter-sort-name-button, .filter-sort-address-button, .filter-add-truck-button {
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    color: #FFFFFF;
+    font-weight: 600;
+    border-radius: 96px;
+    border: 0.2em solid black;
+    padding: 0.2em 1.5em 0.2em 1.5em;
+    cursor: pointer;
+    font-size: min(min(2vw, 2em), 1.5vh);
+    width: min(15vw, 20rem);
+    height: min(4vw, 5em);
+}
+
+.filter-sort-name-button:hover, .filter-sort-address-button:hover, .filter-add-truck-button:hover{
+    transform: scale(1.025);
+    box-shadow: 0 0 1.5em 0 rgba(26, 26, 26, 0.12);
+    transition: transform 0.02s ease, box-shadow 0.3s ease;
+}
+
+/* Navbar container */
+
+.navbar {
+    width: 100%;
+    display: flex;
+    background-color: #ffffff;
+    font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans", Arial, sans-serif;
+}
+
+
+/* Links on the navbar_layout (not dropdown buttons) */
+.navbar-link {
+    width: 100%;
+    font-size: 0.75em;
+    letter-spacing: 0.025em;
+    line-height: 1.5em;
+    word-wrap: break-word;
+    color: #222222;
+    font-weight: 500;
+    text-align: left;
+    padding: 1vw 1vw;
+    text-decoration: none;
+    -webkit-text-stroke: 0.0025em #b0b0b0;
+    border-bottom: 0.15em solid rgba(141, 141, 141, 0.34);
+}
+
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 1vw 1vw;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    border-bottom: 0.5vw solid rgba(45, 45, 45, 0.77);
+}

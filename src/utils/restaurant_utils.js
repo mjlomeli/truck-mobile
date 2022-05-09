@@ -2,18 +2,16 @@ import axios from "axios";
 
 let url = "https://truck-mobile-backend.herokuapp.com";
 url = "http://localhost:8080"
+const params = ['permit', 'name', 'address', 'foodtypes', 'longitude', 'latitude']
 
 const toJSON = (restaurant) => {
-    let data = {
-        permit: null,
-        name: null,
-        address: null,
-        foodtypes: null,
-        longitude: null,
-        latitude: null,
-        ...restaurant
-    }
-    return JSON.stringify(data);
+    if (!restaurant)
+        return '{}';
+    let filtered = params.reduce((arr, k) => {
+        let value = k in restaurant ? restaurant[k] : null;
+        return arr.concat([[k, value]])
+    }, []);
+    return JSON.stringify(Object.fromEntries(filtered));
 }
 
 

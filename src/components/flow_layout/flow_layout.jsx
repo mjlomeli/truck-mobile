@@ -2,14 +2,7 @@ import React from 'react';
 import './flow_layout.css'
 import {v4 as uuidv4} from "uuid";
 
-let defaultComponents = () => {
-    let components = [];
-    for (let i = 0; i < 17; i++) {
-        let comp = <CardThumbnail />;
-        components.push(comp);
-    }
-    return components
-}
+
 
 
 class FlowLayout extends React.Component {
@@ -19,14 +12,14 @@ class FlowLayout extends React.Component {
             this.classGrid = `global-flowlayout-grid ${props.classGrid || ""}`;
             this.classElements = `global-flowlayout-items ${props.classElements || ""}`;
             this.state = {
-                components: props.components || defaultComponents(),
+                components: props.components,
                 maxColumns: props.maxColumns || 0
             }
         } else {
             this.classGrid = `global-flowlayout-grid global-default-flowlayout-grid`;
             this.classElements = `global-flowlayout-items global-default-flowlayout-items`;
             this.state = {
-                components: defaultComponents(),
+                components: [],
                 maxColumns: 1
             }
         }

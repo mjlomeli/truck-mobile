@@ -1,17 +1,14 @@
 import * as ModalUtil from "./../utils/modal_utils";
 
-export const RECEIVE_CREATE_RESTAURANT = "RECEIVE_CREATE_RESTAURANT";
-export const RECEIVE_UPDATE_RESTAURANT = "RECEIVE_UPDATE_RESTAURANT";
+export const RECEIVE_MODAL= "RECEIVE_MODAL";
 export const REMOVE_MODAL = "REMOVE_MODAL";
 export const RECEIVE_MODAL_ERROR = "MODAL_ERROR";
 
 
-const receiveCreateRestaurant = () => ({
-    type: RECEIVE_CREATE_RESTAURANT
-})
-
-const receiveUpdateRestaurant = () => ({
-    type: RECEIVE_UPDATE_RESTAURANT
+const receiveModal = (name, permit) => ({
+    type: RECEIVE_MODAL,
+    name,
+    permit
 })
 
 const removeModal = () => ({
@@ -25,26 +22,19 @@ const receiveModalError = () => ({
 })
 
 
-export const createRestaurant = () => (dispatch, getState) => {
-    return ModalUtil.createRestaurant(getState()).then(
-        res => dispatch(receiveCreateRestaurant()),
-        error => dispatch(receiveModalError())
-    )};
-
-export const updateRestaurant = () => (dispatch, getState) => {
-    return ModalUtil.updateRestaurant(getState()).then(
-        res => dispatch(receiveUpdateRestaurant()),
-        error => dispatch(receiveModalError())
-    )};
+export const activateModal = (name, permit) => (dispatch, getState) => {
+    return ModalUtil.activateModal(name)
+        .then(res => dispatch(receiveModal(name, permit))
+    )
+};
 
 
-export const deleteModal = () => (dispatch) => {
+export const deactivateModal = () => (dispatch) => {
     return dispatch(removeModal())
 };
 
 
 window.ModalAction = {
-    updateRestaurant,
-    createRestaurant,
-    deleteModal
+    activateModal,
+    deactivateModal
 }

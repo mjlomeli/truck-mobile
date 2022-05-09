@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import {HashRouter} from "react-router-dom";
 import {store} from "./store/store";
 import App from './App';
+import {fetchRestaurants} from "./actions/restaurant_action";
 
 const Root = ({store}) => (
     <Provider store={store}>
@@ -16,6 +17,7 @@ const Root = ({store}) => (
 document.addEventListener("DOMContentLoaded", () => {
     const rootElement = document.getElementById("root");
     const root = ReactDOM.createRoot(rootElement);
+    fetchRestaurants()(store.dispatch)
     root.render(<Root store={store}/>);
     window.store = store;
 });
