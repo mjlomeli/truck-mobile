@@ -2,6 +2,7 @@ import axios from "axios";
 import {v4 as uuidv4} from "uuid";
 
 const url = "https://truck-mobile-backend.herokuapp.com";
+//const url = "https://localhost:8080";
 const params = ['permit', 'name', 'address', 'foodtypes', 'longitude', 'latitude']
 
 const toJSON = (restaurant) => {
