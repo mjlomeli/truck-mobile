@@ -59,13 +59,17 @@
     font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
     word-wrap: break-word;
     cursor: inherit;
+    margin: auto;
 }
 
 .card-listing-tags {
-    border-radius: 1vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
     overflow: hidden;
     cursor: inherit;
-    padding: 2% 4% 2% 4%;
+    padding: 0.75rem 2rem 0.75rem 2rem;
 }
 
 .close-border {
@@ -109,7 +113,7 @@ button.close {
     font-weight: 600;
     border-radius: 96px;
     border: 0.2em solid black;
-    padding: 0.2em 1.5em 0.2em 1.5em;
+    padding: 0.2rem 1.5rem 0.2rem 1.5rem;
     cursor: pointer;
     font-size: min(min(1.5vw, 1.5em), 1.5vh);
     width: min(10vw, 20rem);
@@ -125,4 +129,8 @@ button.close {
 .card-listing-interactive {
     display: flex;
     justify-content: space-evenly;
+}
+
+.border-update-button{
+    margin: auto;
 }

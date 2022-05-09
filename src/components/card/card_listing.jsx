@@ -161,7 +161,9 @@ class CardListing extends React.Component {
                         classElements="card-listing-items"/>
             <div className={"card-listing-interactive"}>
                 <Availability enabled={true}/>
+                <div className={"border-update-button"}>
                 {this.update()}
+                </div>
             </div>
         </div>
     }

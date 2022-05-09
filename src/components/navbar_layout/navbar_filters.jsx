@@ -64,7 +64,7 @@ class Filters extends React.Component {
         ]
         return <>
             <NavbarLayout components={components}
-                          className="navbar"
+                          className="navbar-filter"
                           classHeader="navbar-link"/>
         </>
     }
