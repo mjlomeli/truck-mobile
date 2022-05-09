@@ -61,7 +61,6 @@ let ace_spades = <img
 
 <br>
 
-![CardLayout](render_example.png)
 
 <br>
 
@@ -142,7 +141,6 @@ let components = {
 
 <br>
 
-![GridLayout](render_example.png)
 
 <br>
 
@@ -170,8 +168,6 @@ Now in the css file, the container and the grid items can be accessed.
 }
 ```
 <br>
-
-![GridLayout](styled_example.png)
 
 
 # GridLayout
@@ -242,7 +238,6 @@ let components = {
 
 <br>
 
-![GridLayout](render_example.png)
 
 <br>
 
@@ -271,7 +266,6 @@ Now in the css file, the container and the grid items can be accessed.
 ```
 <br>
 
-![GridLayout](styled_example.png)
 
 
 # Navbar
@@ -340,5 +334,3 @@ const components = [
 ```
 
 <br>
-
-![NavbarLayout](render_example.png)
