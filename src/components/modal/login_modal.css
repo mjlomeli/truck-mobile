@@ -1,0 +1,282 @@
+
+.login-background {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(34, 34, 34, 0.65);
+}
+
+.login-modal-items {
+    width: 100%;
+    height: 100%;
+}
+
+.login-modal {
+    display: flex;
+    align-content: space-evenly;
+    position: fixed;
+    grid-row-gap: min(2vh, 2em);
+    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
+    z-index: 50;
+    width: min(50vw, 22rem);
+    height: min(90vh, 50rem);
+    max-height: 92%;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 24px;
+    background-color: #FFFFFF;
+    border: 0.025em solid black;
+    padding: 1.5em 2em 1.5em 2em;
+    box-shadow: 0 6px 36px rgb(34 34 34 / 33%);
+    transition: opacity 150ms ease-out,transform 255ms cubic-bezier(0.175, 0.745, 0.425, 1.11);
+}
+
+
+/******** Header ***************/
+.login-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-register-button {
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    background: transparent;
+    font-weight: 600;
+    border-radius: 96px;
+    border: 0.2em solid black;
+    padding: 0.2em 1.5em 0.2em 1.5em;
+    cursor: pointer;
+    font-size: min(min(1.5vw, 0.8em), 1.5vh);
+    width: min(10vw, 6rem);
+    height: min(10vw, 3em);
+}
+
+.login-signin-text {
+    font-weight: 700;
+    color: rgba(34, 34, 34, 0.84);
+    margin: auto;
+    font-size: min(min(2vw, 1.2em), 2vh);
+}
+
+
+/******** Form *****************/
+.login-form {
+    grid-gap: min(2vh, 1em);
+}
+
+.login-email-text, .login-password-text {
+    font-weight: 400;
+    font-size: min(min(5vw, 0.8em), 5vh);
+}
+
+.login-input-email, .login-input-password {
+    background-color: #FFFFFF;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.12) inset;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 0.05em solid rgba(34, 34, 34, 0.15);
+    font-size: min(min(5vw, 1em), 5vh);
+    width: min(50vw, 21rem);
+    height: min(5vh, 2.5em);
+}
+
+.login-input-email:hover, .login-input-password:hover {
+    border: 0.05em solid rgba(14, 0, 0, 0.55);
+}
+
+
+/*************** Options ************/
+
+.login-options {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.login-options-divider {
+    width: min(0.5vw, 1em);
+}
+
+.login-forgot-pass {
+    font-weight: 400;
+    font-size: min(1.75vw, 0.8em);
+    color: #595959;
+    text-decoration: underline;
+}
+
+.login-stay-signed {
+    font-weight: 400;
+    font-size: min(3vw, 1em);
+    color: #595959;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    --check-width: min(10vw, 2em);
+    --check-heigth: min(10vh, 2em);
+}
+
+.login-container input {
+    position: relative;
+    width: var(--check-width);
+    height: var(--check-heigth);
+    opacity: 0;
+    cursor: pointer;
+}
+
+.login-checkmark {
+    position: absolute;
+    height: var(--check-heigth);
+    width: var(--check-width);
+    background-color: #eee;
+    border: 0.1em solid #818181;
+    border-radius: 6px;
+}
+
+.login-container:hover > input ~ .login-checkmark {
+    background-color: #ccc;
+}
+
+.login-container > input:checked ~ .login-checkmark {
+    background-color: #000000;
+}
+
+.login-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.login-container input:checked ~ .login-checkmark:after {
+    display: block;
+}
+
+.login-container .login-checkmark:after {
+    top: calc(var(--check-heigth) * .125);
+    left: calc(var(--check-width) * 0.35);
+    width: min(1vw, 0.5em);
+    height: min(2vh, 1em);
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+
+/*********** Submit *************/
+
+.login-submit-button:enabled {
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    font-weight: 500;
+    border-radius: 96px;
+    border: 0.15em solid black;
+    padding: 1em 5em 1em 5em;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-size: min(min(5vw, 1em), 2.5vh);
+    width: min(50vw, 21rem);
+    height: min(10vh, 3.5em);
+}
+
+.login-submit-button:enabled:hover {
+    transform: scale(1.025);
+    background-color: #222222;
+    box-shadow: 0 0 1.5em 0 rgba(26, 26, 26, 0.12);
+    transition: transform 0.02s ease, box-shadow 0.3s ease;
+}
+
+.login-submit-button:disabled {
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    font-weight: 500;
+    border-radius: 96px;
+    border: 0.15em solid transparent;
+    padding: 1em 5em 1em 5em;
+    background-color: #6b6b6b;
+    color: white;
+    cursor: not-allowed;
+    font-size: min(min(5vw, 1em), 2.5vh);
+    width: min(50vw, 21rem);
+    height: min(10vh, 3.5em);
+}
+
+/*********** Divider ************/
+
+.login-divider {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+}
+
+.login-left-divider, .login-right-divider{
+    width: min(25vw, 9em);
+    height: 0.06em;
+    flex-grow: 100;
+    background-color: rgba(34, 34, 34, 0.15);
+}
+
+.login-divider-text {
+    font-weight: 400;
+    font-size: min(min(2vw, 1em), 2vh);
+    line-height: 0;
+    color: rgba(34, 34, 34, 0.7);
+}
+
+/*********** Alternatives *************/
+
+.login-alternatives {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+    justify-content: center;
+    justify-items: center;
+    row-gap: min(2vh, 1em);
+}
+
+.login-google, .login-facebook, .login-apple {
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    background: transparent;
+    font-weight: 500;
+    border-radius: 96px;
+    border: 0.025em solid black;
+    padding: 1em 3em 1em 3em;
+    cursor: pointer;
+    font-size: min(min(2vw, 1em), 2vh);
+    width: min(50vw, 20rem);
+    height: min(12vh, 3.2em);
+}
+
+.login-google:hover, .login-facebook:hover, .login-apple:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 1.5vw 0 rgba(26, 26, 26, 0.12);
+    transition: transform 0.07s ease, box-shadow 0.3s ease;
+}
+
+/****** Terms and Conditions ***********/
+
+.login-terms-conditions {
+    font-weight: 400;
+    font-size: min(min(3vw, 0.85em), 2vh);
+    color: rgba(34, 34, 34, 0.7);
+    line-height: 1.5;
+}

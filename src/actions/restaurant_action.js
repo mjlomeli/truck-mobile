@@ -21,14 +21,14 @@ const receiveRestaurant = restaurant =>({
     restaurant: restaurant
 })
 
-const removeRestaurant = restaurantId =>({
+const removeRestaurant = permit =>({
     type: REMOVE_RESTAURANT,
-    restaurantId: restaurantId
+    permit: permit
 })
 
-const receiveRestaurantError = (restaurantId, errors) =>({
+const receiveRestaurantError = (permit, errors) =>({
     type: RECEIVE_RESTAURANT_ERROR,
-    restaurantId: restaurantId,
+    permit: permit,
     errors: errors
 })
 
@@ -44,18 +44,18 @@ export const fetchRestaurants = () => dispatch =>(
     RestaurantUtil.fetchRestaurants().then(
         restaurants => dispatch(receiveRestaurants(restaurants)),
         err => {
-            dispatch(AlertAction.systemError(err.responseJSON));
-            return dispatch(receiveRestaurantError(err.responseJSON))
+            //dispatch(AlertAction.systemError(err));
+            return dispatch(receiveRestaurantError(err))
         }
     )
 )
 
-export const fetchRestaurant = restaurantId => (dispatch) => {
-    return RestaurantUtil.fetchRestaurant(restaurantId).then(
+export const fetchRestaurant = permit => (dispatch) => {
+    return RestaurantUtil.fetchRestaurant(permit).then(
         restaurant => dispatch(receiveRestaurant(restaurant)),
         err => {
-            dispatch(AlertAction.systemError(err.responseJSON));
-            return dispatch(receiveRestaurantError(restaurantId, err.responseJSON))
+            dispatch(AlertAction.systemError(err));
+            return dispatch(receiveRestaurantError(permit, err))
         }
     )
 }
@@ -63,12 +63,12 @@ export const fetchRestaurant = restaurantId => (dispatch) => {
 export const createRestaurant = restaurant => dispatch =>(
     RestaurantUtil.createRestaurant(restaurant).then(
         restaurant => {
-            dispatch(AlertAction.success("Your Restaurant is now public!"));
+            //dispatch(AlertAction.success("Your Restaurant is now public!"));
             dispatch(receiveRestaurant(restaurant))
         },
         err => {
-            dispatch(AlertAction.systemError(err.responseJSON));
-            return dispatch(receiveRestaurantError(restaurant.id, err.responseJSON))
+            //dispatch(AlertAction.systemError(err));
+            return dispatch(receiveRestaurantError(restaurant.permit, err))
         }
     )
 )
@@ -76,31 +76,31 @@ export const createRestaurant = restaurant => dispatch =>(
 export const updateRestaurant = restaurant => dispatch =>(
     RestaurantUtil.updateRestaurant(restaurant).then(
         restaurant => {
-            dispatch(AlertAction.success("Changes has been saved."));
+            //dispatch(AlertAction.success("Changes has been saved."));
             dispatch(receiveRestaurant(restaurant))
         },
         err => {
-            dispatch(AlertAction.systemError(err.responseJSON));
-            return dispatch(receiveRestaurantError(restaurant.id, err.responseJSON))
+            //dispatch(AlertAction.systemError(err));
+            return dispatch(receiveRestaurantError(restaurant.permit, err))
         }
     )
 )
 
-export const deleteRestaurant = restaurantId => dispatch =>(
-    RestaurantUtil.deleteRestaurant(restaurantId).then(
+export const deleteRestaurant = permit => dispatch =>(
+    RestaurantUtil.deleteRestaurant(permit).then(
         restaurant => {
-            dispatch(AlertAction.caution("Sorry to see you go! Your restaurant is deleted."));
-            dispatch(removeRestaurant(restaurant.id))
+            //dispatch(AlertAction.caution("Sorry to see you go! Your restaurant is deleted."));
+            dispatch(removeRestaurant(restaurant.permit))
         },
         err => {
-            dispatch(AlertAction.systemError(err.responseJSON));
-            return dispatch(receiveRestaurantError(restaurantId, err.responseJSON))
+            //dispatch(AlertAction.systemError(err.responseJSON));
+            return dispatch(receiveRestaurantError(permit, err))
         }
     )
 )
 
-export const resetRestaurantError = restaurantId => dispatch =>(
-    dispatch({type: RESET_RESTAURANT_ERROR, restaurantId: restaurantId})
+export const resetRestaurantError = permit => dispatch =>(
+    dispatch({type: RESET_RESTAURANT_ERROR, permit: permit})
 )
 
 export const resetRestaurantsError = () => dispatch =>(
@@ -114,5 +114,6 @@ window.RestaurantAction = {
     resetRestaurantError,
     createRestaurant,
     updateRestaurant,
-    deleteRestaurant
+    deleteRestaurant,
+    example: () => fetchRestaurants()(window.store.dispatch).then(() => window.store.getState())
 }

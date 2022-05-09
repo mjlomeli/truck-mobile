@@ -1,0 +1,165 @@
+.global-card-listing-grid {
+    /* Autofits between ranges 20em and 50em */
+    /* grid-template-columns: repeat(auto-fit, minmax(20em, 50em)); */
+    /* grid-template-columns: repeat(auto-fit, fit-content(200px)); */
+
+    /*  The minimal allowable size is 10em vs maximum size is infinite
+        Remove to allow more tightly stretching. */
+    grid-template-columns: repeat(auto-fit, minmax(10em, 100%));
+    grid-auto-flow: row dense;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+
+    /*background-color: #2196F3;*/
+    /*padding: 1%;*/
+}
+
+.global-card-listing-items {
+    cursor: inherit;
+    width: 100%;
+    height: 100%;
+
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    /*border: 1px solid rgba(0, 0, 0, 0.8);*/
+    /*font-size: 2em;*/
+}
+
+.global-card-listing-grid:hover img {
+    box-shadow: 0em 0em 1vw 0 rgba(26, 26, 26, 0.3);
+    transition: box-shadow 0.2s ease;
+}
+
+.global-card-listing-grid:hover .card-listing-favorite{
+    transform: translateY(0%) scale(1);
+    opacity: 100%;
+}
+
+.global-card-listing-grid .card-listing-favorite:hover{
+    transform: scale(1.2);
+}
+
+
+.card-listing-image-div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    cursor: inherit;
+    object-fit: scale-down; /* Scales down the div to fit the maximum allowable by the window (e.g. the grid)*/
+}
+
+.card-listing-image{
+    position: relative;
+    box-sizing: inherit;
+    border-radius: 0.3vw;
+    cursor: inherit;
+
+    /* Set the image to be infinite sized */
+    width: 100%;
+    height: 100%;
+    /* Not needed here: object-fit: scale-down
+       It will resize to its actual pixel size or scale it down.
+    */
+}
+
+.card-listing-favorite {
+    width: 1em;
+    height: 1em;
+    color: #222222;
+    background-color: white;
+    z-index: 10;
+    padding: 0.5em;
+    border-radius: 50%;
+
+    position: absolute;
+    transition: opacity 0.2s linear, transform 0.1s ease-out, opacity 0.1s linear;
+    right: 5%;
+    top: 5%;
+    transform: translateY(100%);
+    opacity: 0;
+    cursor: pointer;
+}
+
+.card-listing-favorite-image {
+    position: relative;
+    margin-top: 0.1em;
+    width: 90%;
+    height: 90%;
+}
+
+.card-listing-favored {
+    fill: #A61A2E;
+}
+
+.card-listing-favorite:hover {
+    box-shadow: 0 0 1em 0 rgba(26, 26, 26, 0.44);
+    transition: transform 0.02s ease, box-shadow 0.2s ease;
+}
+
+.card-listing-title {
+    display: inline-block;
+    color: #222;
+    font-weight: 600;
+    font-size: 1em;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    cursor: inherit;
+}
+
+.card-listing-price {
+    color: #222;
+    font-size: 1em;
+    line-height: 1em;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    cursor: inherit;
+}
+
+.card-listing-discounted {
+    color: #258635;
+    text-decoration: line-through;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    font-size: 0.75em;
+    line-height: 0.75em;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    cursor: inherit;
+
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+
+}
+
+.card-listing-percentage-off {
+    color: #258635;
+    font-size: 0.75em;
+    line-height: 0.75em;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    word-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    cursor: inherit;
+}
+
+.card-listing-tags-label {
+    color: #222;
+    font-size: 0.72em;
+    line-height: 0.72em;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Sans", "Segoe UI", "Helvetica", Arial, sans-serif;
+    word-wrap: break-word;
+    cursor: inherit;
+}
+
+.card-listing-tags {
+    border-radius: 1vw;
+    overflow: hidden;
+    display: inline-flex;
+    cursor: inherit;
+    padding: 2% 4% 2% 4%;
+}
+

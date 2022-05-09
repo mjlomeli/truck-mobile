@@ -8,10 +8,5 @@ import thunk from 'redux-thunk';
 export const store = configureStore({
     reducer: rootReducer,
     preloadedState: {},
-    enhancers: applyMiddleware(thunk, logger)
+    enhancers: [applyMiddleware(thunk, logger)]
 });
-
-    // if (test)
-    //     return createStore(rootReducer, preloadedState, );
-    // else
-    //     return createStore(rootReducer, preloadedState, applyMiddleware(thunk));

@@ -9,17 +9,21 @@ export default function RestaurantReducer(prevState={}, action){
     let newState = Object.assign({}, prevState) // this isn't a deep copy
     switch(action.type){
         case RECEIVE_RESTAURANTS:
+            if (!action.restaurants)
+                return prevState;
             action.restaurants.forEach(restaurant =>{
-                restaurant.id = parseInt(restaurant.id);
-                newState[restaurant.id] = restaurant;
+                newState[restaurant.permit] = restaurant;
             })
             return newState;
         case RECEIVE_RESTAURANT:
-            action.restaurant.id = parseInt(action.restaurant.id);
-            newState[action.restaurant.id] = action.restaurant;
+            if (!action.restaurant)
+                return prevState;
+            newState[action.restaurant.permit] = action.restaurant;
             return newState;
         case REMOVE_RESTAURANT:
-            delete newState[parseInt(action.restaurantId)]
+            if (!action.permit)
+                return prevState;
+            delete newState[action.permit]
             return newState;
         default:
             return prevState

@@ -10,13 +10,13 @@ export const errorRestaurant = (prevState = {}, action) => {
     let newState = Object.assign({}, prevState);
     switch (action.type) {
         case RECEIVE_RESTAURANT_ERROR:
-            newState[action.restaurantId] = action.errors;
+            newState[action.permit] = action.errors;
             return newState;
         case RECEIVE_RESTAURANT:
-            delete newState[action.restaurant.id];
+            delete newState[action.restaurant.permit];
             return newState;
         case RESET_RESTAURANT_ERROR:
-            delete newState[action.restaurantId];
+            delete newState[action.permit];
             return newState;
         default:
             return prevState;

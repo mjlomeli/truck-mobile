@@ -71,7 +71,7 @@ export const success = (message, timeout=5000) => (dispatch, getState) => {
 
 
 const fetchTimoutId = (getState) => {
-    let alert = getState().ui.alert;
+    let alert = getState().entities.alert;
     return !!Object.keys(alert).length ? alert.timeoutId : null;
 }
 
