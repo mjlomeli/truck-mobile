@@ -1,6 +1,6 @@
-![FrontPage](render_example.png)
-![Creating](render_example.png)
-![updating](render_example.png)
+![FrontPage](https://github.com/mjlomeli/truck-mobile/blob/master/images/create-truck.PNG)
+![Creating](https://github.com/mjlomeli/truck-mobile/blob/master/images/front-page.PNG)
+![updating](https://github.com/mjlomeli/truck-mobile/blob/master/images/update-truck.PNG)
 
 
 # Frontend
