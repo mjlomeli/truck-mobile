@@ -5,6 +5,8 @@
     Nothing here unless something new comes up.
     This will override every existing gridlayout container.
     */
+    justify-content: space-evenly;
+    gap: 1rem;
 }
 
 .global-flowlayout-items {

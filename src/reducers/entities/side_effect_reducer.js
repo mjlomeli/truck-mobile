@@ -25,7 +25,7 @@ export default function sideEffectReducer(prevState=[], action){
         case RECEIVE_RESTAURANTS:
             return Object.values(action.restaurants);
         case RECEIVE_RESTAURANT:
-            newState.push(action.restaurants);
+            newState.push(action.restaurant);
             return newState;
         case REMOVE_RESTAURANT:
             return newState.filter(restaurant => restaurant.permit !== action.permit);

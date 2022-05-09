@@ -28,7 +28,6 @@ class Listing extends React.Component {
         let notEqual = preList.map((e, i) => [e, postList[i]]).some(([a, b]) => {
             return JSON.stringify(a) !== JSON.stringify(b);
         });
-        console.log(notEqual)
         if (notEqual)
             return true;
 
@@ -49,7 +48,7 @@ class Listing extends React.Component {
         let cards = this.props.trucks.map(({permit}) => <CardListing key={permit} permit={permit}/>);
         return <>
             <div className="App">
-                <FlowLayout key={uuidv4()} components={cards} maxColumns={2}/>
+                <FlowLayout classGrid={"flow-listing"} key={uuidv4()} components={cards} maxColumns={2}/>
             </div>
         </>
     }

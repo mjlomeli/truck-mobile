@@ -70,18 +70,21 @@ class CardListing extends React.Component {
 
     update(){
         return <>
-            <button type="button" className="card-listing-update"
-                    onClick={this.onclickupdate}>
+            <button className="card-update-button"
+                    onClick={this.onclickupdate}
+                    type="button">
                 Update
             </button>
         </>
     }
 
     close(){
-        return <button type="button" className="close"
+        return <div className={"close-border"}>
+            <button type="button" className="close"
                        onClick={this.onclickclose}>
             ×
-        </button>
+            </button>
+        </div>
     }
 
     title() {
@@ -147,9 +150,7 @@ class CardListing extends React.Component {
         let components = {
             'title': this.title(),
             'address': this.address(),
-            'foodtypes': this.foodtypes(),
-            'tag': <Availability enabled={false}/>,
-            'update': this.update()
+            'foodtypes': this.foodtypes()
         }
 
         return <div className={"card-listing"} onClick={this.onclick}>
@@ -158,6 +159,10 @@ class CardListing extends React.Component {
                         components={components}
                         className="card-listing-grid"
                         classElements="card-listing-items"/>
+            <div className={"card-listing-interactive"}>
+                <Availability enabled={true}/>
+                {this.update()}
+            </div>
         </div>
     }
 }

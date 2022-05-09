@@ -1,4 +1,5 @@
 import axios from "axios";
+import {v4 as uuidv4} from "uuid";
 
 let url = "https://truck-mobile-backend.herokuapp.com";
 url = "http://localhost:8080"
@@ -7,6 +8,8 @@ const params = ['permit', 'name', 'address', 'foodtypes', 'longitude', 'latitude
 const toJSON = (restaurant) => {
     if (!restaurant)
         return '{}';
+    if (!restaurant.permit)
+        restaurant.permit = uuidv4();
     let filtered = params.reduce((arr, k) => {
         let value = k in restaurant ? restaurant[k] : null;
         return arr.concat([[k, value]])
