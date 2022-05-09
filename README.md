@@ -1,70 +1,330 @@
-# Getting Started with Create React App
+# CardListing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The card layout renders a component, and has the ability
+to flip like a playing card on a click onto another component.
+To begin using the card layout follow these instructions.
 
-## Available Scripts
+Decide on your parts. Two sections must be filled out.
+1. The front of the card
+2. The back of the card
 
-In the project directory, you can run:
 
-### `npm start`
+## Either side of the card must be a component
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+An example below illustrates the general component to be the front and back.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```javascript
+// front of card_layout
+let ace_hearts = <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Playing_card_heart_A.svg" alt="ace_hearts"/>
 
-### `npm test`
+// back of card_layout
+let ace_spades = <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/01_of_spades_A.svg/703px-01_of_spades_A.svg.png" alt="ace_spades"/>
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Rendering
+To apply these two into the card layout, assign the props ```front``` and ```back``` to
+each respectively.
+```javascript
+<CardLayout front={ace_hearts} back={ace_spades} />
+```
 
-### `npm run build`
+## Finale
+Lets put it all together.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+import CardLayout from "../card_layout/card_layout";
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+... // inside a render function
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+let ace_hearts = <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Playing_card_heart_A.svg"
+                      alt="ace_hearts"/>
+let ace_spades = <img
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/01_of_spades_A.svg/703px-01_of_spades_A.svg.png"
+    alt="ace_spades"/>
 
-### `npm run eject`
+<CardLayout front={ace_hearts} back={ace_spades}/>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![CardLayout](render_example.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Customizing
 
-## Learn More
+### Custom onClick
+To add your own onClick, pass your onClick method to the props called ```onClick```. It will override the
+flip.
+```javascript
+<CardLayout onClick={() => myOnClickFunction} .../>
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# GridLayout
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To begin using the grid layout follow these instructions.
 
-### Code Splitting
+Decide on your parts. Two sections must be filled out.
+1. The gridTemplateAreas
+2. The corresponding components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## The gridTemplateAreas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+An example below illustrates the general formatting. For making a grid
+of various dimensions. A full horizontal category means that a
+component fills the entire top area.
+```javascript
+let areas = [
+    ['header_template header_template header_template header_template header_template header_template'],
+    ['menu main main main right right'],
+    ['menu footer_template footer_template footer_template footer_template footer_template']
+]
+```
 
-### Making a Progressive Web App
+This is the component layout. Its an association of a component linked/mapped
+to the grid area.
+```javascript
+let components = {
+    'header': <div>Header</div>,
+    'menu': <div>Menu</div>,
+    'main': <div>Main</div>,
+    'right': <div>Right</div>,
+    'footer': <div>Footer</div>
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Rendering
+To render the grid pass in the gridTemplateAreas and components to the props
 
-### Advanced Configuration
+```javascript
+import GridLayout from "../grid_layout/grid_layout";
+<GridLayout areas={areas} components={components}/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Finale
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```javascript
+import GridLayout from "../grid_layout/grid_layout";
 
-### `npm run build` fails to minify
+... // inside a render function
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+let areas = [
+    ['header_template header_template header_template header_template header_template header_template'],
+    ['menu main main main right right'],
+    ['menu footer_template footer_template footer_template footer_template footer_template']
+]
+let components = {
+    'header': <div>Header</div>,
+    'menu': <div>Menu</div>,
+    'main': <div>Main</div>,
+    'right': <div>Right</div>,
+    'footer': <div>Footer</div>
+}
+
+<GridLayout gridTemplateAreas={areas} components={components}/>
+```
+
+<br>
+
+![GridLayout](render_example.png)
+
+<br>
+
+## Customizing
+To add styles to the grid or the grid items, a class name to either can be passed
+down by defining the props ```grid``` and ```item```.
+
+```javascript
+<GridLayout gridClass="grid" itemClass="item" .../>
+```
+
+Now in the css file, the container and the grid items can be accessed.
+```css
+.grid {
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+}
+
+.item {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}
+```
+<br>
+
+![GridLayout](styled_example.png)
+
+
+# GridLayout
+
+To begin using the grid layout follow these instructions.
+
+Decide on your parts. Two sections must be filled out.
+1. The gridTemplateAreas
+2. The corresponding components
+
+
+## The gridTemplateAreas
+
+An example below illustrates the general formatting. For making a grid
+of various dimensions. A full horizontal category means that a
+component fills the entire top area.
+```javascript
+let areas = [
+    ['header_template header_template header_template header_template header_template header_template'],
+    ['menu main main main right right'],
+    ['menu footer_template footer_template footer_template footer_template footer_template']
+]
+```
+
+This is the component layout. Its an association of a component linked/mapped
+to the grid area.
+```javascript
+let components = {
+    'header': <div>Header</div>,
+    'menu': <div>Menu</div>,
+    'main': <div>Main</div>,
+    'right': <div>Right</div>,
+    'footer': <div>Footer</div>
+}
+```
+
+## Rendering
+To render the grid pass in the gridTemplateAreas and components to the props
+
+```javascript
+import GridLayout from "../grid_layout/grid_layout";
+<GridLayout areas={areas} components={components}/>
+```
+
+
+## Finale
+
+```javascript
+import GridLayout from "../grid_layout/grid_layout";
+
+... // inside a render function
+
+let areas = [
+    ['header_template header_template header_template header_template header_template header_template'],
+    ['menu main main main right right'],
+    ['menu footer_template footer_template footer_template footer_template footer_template']
+]
+let components = {
+    'header': <div>Header</div>,
+    'menu': <div>Menu</div>,
+    'main': <div>Main</div>,
+    'right': <div>Right</div>,
+    'footer': <div>Footer</div>
+}
+
+<GridLayout gridTemplateAreas={areas} components={components}/>
+```
+
+<br>
+
+![GridLayout](render_example.png)
+
+<br>
+
+## Customizing
+To add styles to the grid or the grid items, a class name to either can be passed
+down by defining the props ```grid``` and ```item```.
+
+```javascript
+<GridLayout className="grid" classElements="elements" .../>
+```
+
+Now in the css file, the container and the grid items can be accessed.
+```css
+.grid {
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+}
+
+.elements {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}
+```
+<br>
+
+![GridLayout](styled_example.png)
+
+
+# Navbar
+
+The navbar layout renders a component, and has the ability
+to assemble a navbar link header.
+
+Decide on your parts. Two distinct parts must be filled out.
+1. The navigation bar belt.
+2. The drop down content.
+
+## Setting up the data
+
+This is an example of navbar to dropdown relations.
+```javascript
+const components = [
+    {header: "Home", link: "/home"},
+    {header: "Clothing & Shoes", link: "#", components: <ul>
+            <li>link 1</li>
+            <li>link 2</li>
+            <li>link 3</li>
+        </ul>
+    },
+    {header: "Gifts & Gift Cards", components: {
+            "link 1": "/nav_bar",
+            "link 2": "/nav_bar",
+            "#": <CardListing permit={"16MFF-0010"}/>
+        }
+    }
+]
+```
+
+## Rendering
+To apply this navbar assign the prop ```navEntries```.
+
+```javascript
+import NavbarLayout from "./navbar";
+
+<NavbarLayout components={components}/>
+```
+
+## Finale
+Lets put it all together.
+
+```javascript
+import NavbarLayout from "./navbar";
+
+... // inside a render function
+
+const components = [
+        {header: "Home", link: "/home"},
+        {header: "Clothing & Shoes", link: "#", components: <ul>
+                <li>link 1</li>
+                <li>link 2</li>
+                <li>link 3</li>
+            </ul>
+        },
+        {header: "Gifts & Gift Cards", components: {
+                "link 1": "/nav_bar",
+                "link 2": "/nav_bar",
+                "#": <CardListing permit={"16MFF-0010"}/>
+            }
+        }
+    ]
+<NavbarLayout components={components}/>
+```
+
+<br>
+
+![NavbarLayout](render_example.png)
